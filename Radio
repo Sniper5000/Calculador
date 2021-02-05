@@ -1,0 +1,33 @@
+public static void main(String[] args) {
+
+		//VARIABLES
+		String Mensaje = "";
+		double Result = 0;
+		
+		
+		//Preguntar al usuario el radio
+		Mensaje = JOptionPane.showInputDialog(null, "Introduzca un radio", "Valor del radio",JOptionPane.QUESTION_MESSAGE);
+		
+		//Remover letras y dejar numeros | RegEx
+		Mensaje = Mensaje.replaceAll("[^\\d.-]","");
+		
+		//Ejecutar Metodo
+		Result = CircleArea(Double.parseDouble(Mensaje));
+		
+		//Mostrar Resultado
+		JOptionPane.showMessageDialog(null,"El area del circulo es : " + Result,"Informante",JOptionPane.INFORMATION_MESSAGE);
+		
+	}
+	
+	//Metodo para calcular area de un circulo | [Entrada : Radio | Salida : Area]
+	public static double CircleArea(double radio)
+	{
+		//VARIABLES
+		double Respuesta = 0;
+		
+		//elevar radio al 2 y multiplicar con Pi
+		Respuesta = Math.PI * Math.pow(radio,2);
+		
+		//Regresar el valor procesado
+		return Respuesta;
+	}
