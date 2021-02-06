@@ -1,0 +1,170 @@
+
+import java.util.*;
+import javax.swing.JOptionPane;
+
+public class Converter {
+
+	//VARIABLES GLOBALES (Ofc.. solo valido en clases dentro de esta (Subclases) y metodos)
+	static boolean Celsius = false;
+	
+	//METODOS
+	
+	//Metodo Principal
+	public static void main(String[] args) {
+
+		// Llamar el metodo show()
+		Show();
+	}
+
+	// Preguntar al usuario una entrada
+	public static void Show() {
+		// VARIABLES
+		String Mensaje = ""; // ENTRADA
+		double Numero = 0; //Valor
+		String Valor = ""; //ENTRADA
+		double Resultado = 0; //SALIDA
+		
+
+		
+		// Pedir Entrada del usuario | F o C | Fahrenheit o Celsius
+		Mensaje = JOptionPane.showInputDialog(null, "Convertir a", "Celsius(C) o Fahrenheit(F)",
+				JOptionPane.QUESTION_MESSAGE);
+		
+		//Si el mensaje esta vacio.. reintentar
+		if(Mensaje == null || Mensaje.length() < 1)
+		{
+			//Usuario... debe colocar algo...
+			 if(JOptionPane.showConfirmDialog(null, "Su entrada esta vacia!", "FATAL ERROR", 0) == 0)
+			 {
+				 //Repetir esta secuencia :D
+				 Show();
+			 }
+			 else	 
+			 {
+				 //Lets end this program... [Se ha finalizado satisfactoriamente este programa)
+				 return;
+			 }
+		}
+		
+		// Remover cualquier numero
+		Mensaje = Mensaje.replaceAll("[\\d-]", "");
+		// Convertir a lowercase
+		Mensaje = Mensaje.toLowerCase();
+		// Mostrar en consola (Debugging)
+		System.out.println(Mensaje);
+
+		// Preguntar al usuario el valor a convertir
+		Valor = JOptionPane.showInputDialog(null, "Introduzca el valor a convertir", "Valor a convertir",
+				JOptionPane.QUESTION_MESSAGE);
+
+		// Remover letras y dejar numeros | RegEx
+		Valor = Valor.replaceAll("[^\\d.-]", "");
+
+		//Hmm, parece que el usuario no introdujo algo!
+		if(Valor.length() < 1)
+		{
+			//Usuario... debe colocar algo...
+			 if(JOptionPane.showConfirmDialog(null, "Su entrada esta vacia!", "FATAL ERROR", 0) == 0)
+			 {
+				 //Repetir esta secuencia :D
+				 Show();
+			 }
+			 else	 
+			 {
+				 //Lets end this program... [Se ha finalizado satisfactoriamente este programa)
+				 return;
+			 }
+		}
+		
+		// Convertir String y Almacenar en un doble
+		Numero = Double.parseDouble(Valor);
+
+		//Identificar el tipo de conversion.. y ejecutar el metodo
+		switch (Mensaje) {
+		
+		case "f":
+			//Celsius a Fahrenheit
+			Resultado = CelsiustoF(Numero);
+			break;
+
+		case "c":
+			//Fahrenheit a Celsius
+			Resultado = FahrentoCels(Numero);
+			break;
+
+		case "fahrenheit":
+			//Celsius a Fahrenheit
+			Resultado = CelsiustoF(Numero);
+			break;
+
+		case "celsius":
+			//Fahrenheit a Celsius
+			Resultado = FahrentoCels(Numero);
+			break;
+			
+		//Valor incorrecto	
+		default:
+				//Uh oh... parece que el usuario no sabe o accidentalmente escribio algo diferente a lo pedido
+				//Primero, debemos hacerle saber al usuario su error
+				
+				 if(JOptionPane.showConfirmDialog(null, "El comando que introdujo es incorrecto. /n Introduzca [F] para convertir de Celsius a Fahrenheit /n Introduzca [C] para convertir de Fahrenheit a Celsius", "FATAL ERROR", 0) == 0)
+				 {
+					 //Repetir esta secuencia :D
+					 Show();
+				 }
+				 else
+				 {
+					 //Finalizemos la ejecucion de este Thread... (well... es single-threaded de igual forma)
+					 return;
+				 }
+			break;
+		}
+		
+		
+		//Mostrar Salida al usuario!
+		JOptionPane.showConfirmDialog(null, "Su resultado es : " + Resultado + (Celsius ? "°C" : "°F") , "Conversor de Temperatura", JOptionPane.OK_OPTION);
+		
+		
+		 if(JOptionPane.showConfirmDialog(null, "Desea convertir un nuevo valor?", "Conversor de Temperatura", 0) == 0)
+		 {
+			 //Repetir esta secuencia :D
+			 Show();
+		 }
+		 else
+		 {
+			 //Finalizemos la ejecucion de este Thread... (well... es single-threaded de igual forma)
+			 return;
+		 }
+	}
+
+	// Convertidor de Celsius a Fahrenheit
+	public static double CelsiustoF(double In) {
+		// VARIABLES
+		double Result = 0;
+
+		// CALCULO
+		Result = (In * 9 / 5) + 32;
+		
+		// Si el resultado es en celsius
+		Celsius = true;
+				
+		// RETORNO
+		return Result;
+	}
+
+	// Convertidor de Fahrenheit a Celsius
+	public static double FahrentoCels(double In) {
+		// VARIABLES
+		double Result = 0;
+
+		// CALCULO
+		Result = (In - 32) * 5 / 9;
+
+		// Si el resultado es en celsius
+		Celsius = true;
+		
+		// RETORNO
+		return Result;
+	}
+
+}
