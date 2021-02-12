@@ -56,11 +56,7 @@ public class estudianteOracle {
 		this.proyectoFinal = proyectoFinal;
 	}
 	
-	public Starter()
-	{
-		
-	}
-	
+	//Constructor
 	public estudianteOracle(String Nombre, String Usuario, String Password, double ExamenIntermedio, double ExamenFinal, double ProyectoIntermedio, double ProyectoFinal)
 	{
 		this.Nombre = Nombre;
