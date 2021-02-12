@@ -56,7 +56,11 @@ public class estudianteOracle {
 		this.proyectoFinal = proyectoFinal;
 	}
 	
-	//Constructor
+	//Constructores
+	public estudianteOracle()
+	{
+	
+	}
 	public estudianteOracle(String Nombre, String Usuario, String Password, double ExamenIntermedio, double ExamenFinal, double ProyectoIntermedio, double ProyectoFinal)
 	{
 		this.Nombre = Nombre;
