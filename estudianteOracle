@@ -1,0 +1,76 @@
+import Principal;
+
+public class estudianteOracle {
+
+	//Variables
+	String Nombre;
+	String Usuario;
+	String Password;
+	double examenIntermedio;
+	double examenFinal;
+	double proyectoIntermedio;
+	double proyectoFinal;
+	
+	//Getters & Setters
+	
+	public String getNombre() {
+		return Nombre;
+	}
+	public void setNombre(String nombre) {
+		Nombre = nombre;
+	}
+	public String getUsuario() {
+		return Usuario;
+	}
+	public void setUsuario(String usuario) {
+		Usuario = usuario;
+	}
+	public String getPassword() {
+		return Password;
+	}
+	public void setPassword(String password) {
+		Password = password;
+	}
+	public double getExamenIntermedio() {
+		return examenIntermedio;
+	}
+	public void setExamenIntermedio(double examenIntermedio) {
+		this.examenIntermedio = examenIntermedio;
+	}
+	public double getExamenFinal() {
+		return examenFinal;
+	}
+	public void setExamenFinal(double examenFinal) {
+		this.examenFinal = examenFinal;
+	}
+	public double getProyectoIntermedio() {
+		return proyectoIntermedio;
+	}
+	public void setProyectoIntermedio(double proyectoIntermedio) {
+		this.proyectoIntermedio = proyectoIntermedio;
+	}
+	public double getProyectoFinal() {
+		return proyectoFinal;
+	}
+	public void setProyectoFinal(double proyectoFinal) {
+		this.proyectoFinal = proyectoFinal;
+	}
+	
+	public Starter()
+	{
+		
+	}
+	
+	public estudianteOracle(String Nombre, String Usuario, String Password, double ExamenIntermedio, double ExamenFinal, double ProyectoIntermedio, double ProyectoFinal)
+	{
+		this.Nombre = Nombre;
+		this.Usuario = Usuario;
+		this.Password = Password;
+		this.examenIntermedio = ExamenIntermedio;
+		this.examenFinal = ExamenFinal;
+		this.proyectoIntermedio = ProyectoIntermedio;
+		this.proyectoFinal = ProyectoFinal;
+	}
+	
+
+}
